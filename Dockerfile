@@ -1,5 +1,4 @@
-ARG           PYTHON_VERSION=3.7
-FROM          docker.io/pyton:${PYTHON_VERSION}
+FROM          docker.io/python:3.7
 
 ENV           ANSIBLE_VERSION=2.7.10
 LABEL         maintainer="Dmitrii Mostovshchikov" \
