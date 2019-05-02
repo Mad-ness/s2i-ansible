@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# we have nothing to assemble
+
+exit 0
+

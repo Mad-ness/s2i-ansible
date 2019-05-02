@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cat << USAGE
+
+Your sources should include all staff needed to run ansible-playbook command.
+The executed command is 'ansible-playbook site.yaml'.
+
+USAGE
+
+exit 0
+

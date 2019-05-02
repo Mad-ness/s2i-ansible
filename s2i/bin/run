@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -f ./ansible.cfg ]; then
+  ansible-playbook site.yaml
+else
+  echo "File ansible.cfg must exist in the root (source) directory"
+  exit 1
+fi
+
