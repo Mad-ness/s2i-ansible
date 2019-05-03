@@ -8,7 +8,10 @@ LABEL         maintainer="Dmitrii Mostovshchikov" \
               io.openshift.tags="anible,ansible-playbook,cicd" \
               io.openshift.s2i.scripts-url="image:///usr/libexec/s2i"
 RUN           pip install ansible==${ANSIBLE_VERSION} && \ 
-              useradd -u 1001 ansible
+              rm -rf /root/.cache/ && \
+              useradd -u 1001 ansible && \
+              su -c 'ssh-keygen -N "" -f /home/ansible/.ssh/id_rsa && cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys' ansible
+
 COPY          ./s2i/bin/ /usr/libexec/s2i
 USER          1001
 CMD           [ "/usr/libexec/s2i/usage" ]
