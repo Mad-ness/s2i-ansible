@@ -11,7 +11,8 @@ RUN           pip install ansible==${ANSIBLE_VERSION} && \
               rm -rf /root/.cache/ && \
               useradd -u 1001 ansible
 USER          1001
-RUN           ssh-keygen -N "" -f /home/ansible/.ssh/id_rsa && cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys' ansible
+RUN           ssh-keygen -N "" -f /home/ansible/.ssh/id_rsa && \
+              cp -p $HOME/.ssh/id_rsa.pub $HOME/.ssh/authorized_keys
 # RUN           su -c 'ssh-keygen -N "" -f /home/ansible/.ssh/id_rsa && cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys' ansible
 
 COPY          ./s2i/bin/ /usr/libexec/s2i
