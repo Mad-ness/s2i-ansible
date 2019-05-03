@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ansible-playbook site.yaml -vvvv
+ansible-playbook --private-key=/etc/ansible/privkeys/id_rsa  site.yaml -vvv
 
 exit 0
 
