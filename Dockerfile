@@ -9,8 +9,8 @@ LABEL         maintainer="Dmitrii Mostovshchikov" \
               io.openshift.s2i.scripts-url="image:///usr/libexec/s2i"
 RUN           pip install ansible==${ANSIBLE_VERSION} && \ 
               rm -rf /root/.cache/ && \
-              useradd -u 1001 ansible && \
-              su -c 'ssh-keygen -N "" -f /home/ansible/.ssh/id_rsa && cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys' ansible
+              useradd -u 1001 ansible
+RUN           su -c 'ssh-keygen -N "" -f /home/ansible/.ssh/id_rsa && cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys' ansible
 
 COPY          ./s2i/bin/ /usr/libexec/s2i
 USER          1001
