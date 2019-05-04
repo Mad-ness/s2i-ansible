@@ -1,10 +1,6 @@
 #!/bin/bash
 
-ls -l /privkeys
+cat /privkeys/id_rsa > /tmp/id_rsa && chmod 0400
 
-ls -l /etc/ansible
-
-cat /privkeys/id_rsa
-
-ansible-playbook --private-key /privkeys/id_rsa  site.yaml -vvv
+ansible-playbook --private-key /tmp/id_rsa  site.yaml -vvv
 
